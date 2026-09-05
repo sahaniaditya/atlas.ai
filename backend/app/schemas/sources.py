@@ -15,7 +15,7 @@ from datetime import datetime
 from typing import Literal
 from uuid import UUID
 
-from pydantic import BaseModel, Field, HttpUrl,Field, field_validator
+from pydantic import BaseModel, Field, HttpUrl, field_validator
 
 from app.schemas.common import ProcessingStatus, SourceType
 
