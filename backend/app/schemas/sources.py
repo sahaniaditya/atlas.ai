@@ -158,6 +158,8 @@ class TopicDescriptionOutput(TopicDescription):
 
 class StructuredSummary(BaseModel):
     """Per-source LLM output: topics with descriptions, plus supporting sections.
+
+    
     ``topics`` is empty on rows summarized before this shape existed.
     """
     topics: list[TopicDescription] = Field(default_factory=list, max_length=MAX_TOPICS_PER_SOURCE)
