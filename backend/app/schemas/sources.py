@@ -9,13 +9,13 @@ from __future__ import annotations
 
 
 from typing import Any
-from pydantic import BaseModel, Field, field_validator
+
 
 from datetime import datetime
 from typing import Literal
 from uuid import UUID
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl,Field, field_validator
 
 from app.schemas.common import ProcessingStatus, SourceType
 
