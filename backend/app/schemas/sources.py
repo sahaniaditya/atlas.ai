@@ -7,12 +7,8 @@ which is in turn the source of truth for the extension's generated TS types
 
 from __future__ import annotations
 
-
-from typing import Any
-
-
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 from uuid import UUID
 
 from pydantic import BaseModel, Field, HttpUrl, field_validator
