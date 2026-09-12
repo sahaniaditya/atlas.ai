@@ -1564,15 +1564,17 @@ export interface components {
          * StructuredSummary
          * @description Per-source LLM output: topics with descriptions, plus supporting sections.
          *
-         *     ``topics`` is empty on rows summarized before this shape existed.
+         *     ``topics`` is empty on rows summarized before this shape existed, and may
+         *     also be empty if the LLM output didn't include any — callers should treat
+         *     an empty ``topics`` list as "fall back to ``tldr``" (see ``as_prose``).
          */
         StructuredSummary: {
             /** Examples */
-            examples: string[];
+            examples?: string[];
             /** Key Concepts */
-            key_concepts: string[];
+            key_concepts?: string[];
             /** Tldr */
-            tldr: string[];
+            tldr?: string[];
             /** Topics */
             topics?: components["schemas"]["TopicDescription"][];
         };
@@ -1599,11 +1601,13 @@ export interface components {
             /**
              * Description
              * @description Summarized description of this subtopic: definition, how it works, key facts, numbers, and caveats. Not a headline.
+             * @default
              */
             description: string;
             /**
              * Name
              * @description Short specific noun phrase for the subtopic.
+             * @default
              */
             name: string;
         };
@@ -1645,11 +1649,13 @@ export interface components {
             /**
              * Description
              * @description Summarized description of what the source taught about this topic: definitions, how it works, key facts, steps, numbers, names, and caveats. Not a headline or a one-sentence summary.
+             * @default
              */
             description: string;
             /**
              * Name
              * @description Short specific noun phrase copied from the source. Never invent a name.
+             * @default
              */
             name: string;
             /**

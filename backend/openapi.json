@@ -1792,14 +1792,13 @@
         "type": "object"
       },
       "StructuredSummary": {
-        "description": "Per-source LLM output: topics with descriptions, plus supporting sections.\n\n``topics`` is empty on rows summarized before this shape existed.",
+        "description": "Per-source LLM output: topics with descriptions, plus supporting sections.\n\n``topics`` is empty on rows summarized before this shape existed, and may\nalso be empty if the LLM output didn't include any \u2014 callers should treat\nan empty ``topics`` list as \"fall back to ``tldr``\" (see ``as_prose``).",
         "properties": {
           "examples": {
             "items": {
               "type": "string"
             },
             "maxItems": 8,
-            "minItems": 1,
             "title": "Examples",
             "type": "array"
           },
@@ -1808,7 +1807,6 @@
               "type": "string"
             },
             "maxItems": 10,
-            "minItems": 1,
             "title": "Key Concepts",
             "type": "array"
           },
@@ -1817,7 +1815,6 @@
               "type": "string"
             },
             "maxItems": 10,
-            "minItems": 5,
             "title": "Tldr",
             "type": "array"
           },
@@ -1830,11 +1827,6 @@
             "type": "array"
           }
         },
-        "required": [
-          "tldr",
-          "key_concepts",
-          "examples"
-        ],
         "title": "StructuredSummary",
         "type": "object"
       },
@@ -1870,24 +1862,20 @@
         "description": "A named subtopic covered inside a major topic.",
         "properties": {
           "description": {
+            "default": "",
             "description": "Summarized description of this subtopic: definition, how it works, key facts, numbers, and caveats. Not a headline.",
             "maxLength": 4000,
-            "minLength": 1,
             "title": "Description",
             "type": "string"
           },
           "name": {
+            "default": "",
             "description": "Short specific noun phrase for the subtopic.",
             "maxLength": 160,
-            "minLength": 2,
             "title": "Name",
             "type": "string"
           }
         },
-        "required": [
-          "name",
-          "description"
-        ],
         "title": "SubtopicDescription",
         "type": "object"
       },
@@ -1987,16 +1975,16 @@
         "description": "One major topic the source teaches, with a summarized description and subtopics.",
         "properties": {
           "description": {
+            "default": "",
             "description": "Summarized description of what the source taught about this topic: definitions, how it works, key facts, steps, numbers, names, and caveats. Not a headline or a one-sentence summary.",
             "maxLength": 8000,
-            "minLength": 1,
             "title": "Description",
             "type": "string"
           },
           "name": {
+            "default": "",
             "description": "Short specific noun phrase copied from the source. Never invent a name.",
             "maxLength": 160,
-            "minLength": 2,
             "title": "Name",
             "type": "string"
           },
@@ -2010,10 +1998,6 @@
             "type": "array"
           }
         },
-        "required": [
-          "name",
-          "description"
-        ],
         "title": "TopicDescription",
         "type": "object"
       },
